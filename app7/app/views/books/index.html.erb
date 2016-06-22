@@ -1,23 +1,23 @@
 <h1>Listing books</h1>
-<div id="abc">
-<table>
+
+<table id="myid">
   <tr>
     <th>Name</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
-
+ 
 <% @books.each do |book| %>
-  <tr>
+  <tr id ="<%= book.id %>">
     <td><%= book.name %></td>
     <td><%= link_to 'Show', book %></td>
     <td><%= link_to 'Edit', edit_book_path(book) %></td>
-    <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Destroy', book, remote: true, method: :delete, data: { confirm: 'Are you sure?' } %> | <%= link_to 'Delete Book',  '#', data: {book_id: book.id}, class: 'destroy-link' %></td>
   </tr>
 <% end %>
 </table>
-</div>
+
 <br />
 
 <%= form_for(@book, remote: true) do |f| %>
@@ -43,13 +43,13 @@
 <% end %>
 
 
-<div id ="booksList">
- <% @books.each do |book| %>
- <%= render "book", book: book%>
- <%end%>
- </div>
+<!-- <div id ="booksList">
+
+ </div> -->
 
 
-<button id="a" onclick="return abc();">Button</button>
+<!-- <button id="a" onclick="return abc();">Button</button> -->
+
+<!-- <button id="del" onclick="return delet();">Delete Button</button> -->
 
 <%= link_to 'New Book', new_book_path %>

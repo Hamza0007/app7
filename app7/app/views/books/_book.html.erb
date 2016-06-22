@@ -1,4 +1,7 @@
-<li class="list-group-item">
- 
- <%= book.name %> 
-</li>
+
+<tr id="<%= book.id %>">
+    <td><%= book.name %></td>
+    <td><%= link_to 'Show', book %></td>
+    <td><%= link_to 'Edit', edit_book_path(book) %></td>
+    <td> <%= link_to 'Destroy', book, remote: true, method: :delete, data: { confirm: 'Are you sure?' } %> | <%= link_to 'Delete Book',  '#', data: {book_id: book.id}, class: 'destroy-link' %></td>
+  </tr>
